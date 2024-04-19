@@ -1,0 +1,52 @@
+replace binary?
+Open putty(root) and enter below commands:
+1. systemctl stop eatonurlunch
+2. mount -o remount,rw /
+3. chmod 777 /usr/bin
+4. Replace Binary from winSCP(C:\virtual_machines\vagrant\debug\gateway\bin to /usr/bin)
+5. Come back in putty and enter below command:
+  chmod +x /usr/bin/EatonUrLunch
+6. systemctl start eatonurlunch
+
+replace default DB? 
+Open putty and enter below command:
+1. cp /usr/share/default/data/wavelinx/LightControllerV2.db /run/data/wavelinx
+
+how to flash CORE? 
+Connect USB, HDMI PC wire, Keyboard wire to NUC:
+1. Press F10
+2. Select our PD login with admin/BXLinx!5
+3. sudo su
+4. cd extrnal_reimage/
+5. ls -ltr --> shows available version in your PD
+6. sudo fw_update.sh Trellix_filname
+7. then after image complete remove PD
+8. reboot
+9. Then set the IP by choosing Network configuration
+10. Choose change IP : Give IP which we have to set 255.255.255.0 subnet mask 137.55.111.1 Default gateway
+
+To take live logs from WAC?
+Open putty and enter below command:
+1. tail -f /var/log/messages
+
+To get the network key for WAC?
+To get the network key, you can open Putty and use below command:
+1. sudo tmux a
+2. keys print
+
+What is Area?
+In the Wavelinx wireless lighting control system, an 'area' refers to a group of lighting fixtures that are controlled together as a single unit. Areas can be created and configured using the Wavelinx software, and they allow for customized lighting control settings, such as dimming levels, scheduling, and occupancy sensor behavior. By grouping fixtures into areas, users can more easily manage their lighting system and optimize energy efficiency.
+
+What is occupancy set?
+In the Wavelinx wireless lighting control system, 'occupancy set' refers to a specific configuration setting that determines how lighting fixtures in a particular area or zone respond to occupancy sensors.
+When occupancy is detected in an area, the occupancy set determines what actions should be taken by the lighting system.
+For example, the occupancy set may specify that lights should turn on to a certain level when someone enters the area, and then dim or turn off after a certain amount of time has passed without any motion detected.
+Occupancy sets can be configured by users using the Wavelinx software, and they can be customized based on the needs of the space and the preferences of the occupants. 
+By using occupancy sets, users can create lighting systems that are responsive and energy-efficient, while also providing a comfortable and productive environment for building occupants. |
+
+What is daylight set?
+In the Wavelinx wireless lighting control system, 'daylight set' refers to a specific configuration setting that determines how lighting fixtures in a particular area or zone respond to changes in natural daylight levels.
+When natural light levels increase or decrease in an area, the daylight set determines what actions should be taken by the lighting system. 
+For example, the daylight set may specify that lights should dim or turn off when there is sufficient natural light in the area, and then turn on or increase in brightness when natural light levels decrease.
+Daylight sets can be configured by users using the Wavelinx software, and they can be customized based on the needs of the space and the preferences of the occupants. 
+By using daylight sets, users can create lighting systems that are responsive and energy-efficient, while also providing a comfortable and productive environment for building occupants.

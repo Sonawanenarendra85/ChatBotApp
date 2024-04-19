@@ -1,29 +1,23 @@
 function sendMessage() {
-
-    var userInput = document.getElementById("user-input").value;
-
-    if (userInput.trim() === "") return;
-
-    var chatBox = document.getElementById("chat-box");
-
-    var userMessage = document.createElement("div");
-
-    userMessage.textContent = "You: " + userInput;
-
-    chatBox.appendChild(userMessage);
-
-    // Call your chatbot function here and get the response
-
-    // For demonstration, let's just echo the user's input as the response
-
-    var botMessage = document.createElement("div");
-
-    botMessage.textContent = "Chatbot: " + userInput;
-
-    chatBox.appendChild(botMessage);
-
-    document.getElementById("user-input").value = "";
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
+   var userInput = document.getElementById("user-input").value;
+   if (userInput.trim() === "") return;
+   fetch('/chatbot', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({ query: userInput })
+   })
+   .then(response => response.json())
+   .then(data => {
+       var chatBox = document.getElementById("chat-box");
+       var userMessage = document.createElement("div");
+       userMessage.textContent = "You: " + userInput;
+       chatBox.appendChild(userMessage);
+       var botMessage = document.createElement("div");
+       botMessage.textContent = "Chatbot: " + data.response;
+       chatBox.appendChild(botMessage);
+       document.getElementById("user-input").value = "";
+       chatBox.scrollTop = chatBox.scrollHeight;
+   });
 }
